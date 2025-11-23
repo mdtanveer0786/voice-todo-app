@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Voice To-Do — Advanced</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <h1>🎤 Voice To-Do App</h1>
+
+    <div class="controls">
+      <label class="switch">
+        <input id="darkToggle" type="checkbox">
+        <span class="slider"></span>
+      </label>
+
+      <select id="langSelect" title="Language">
+        <option value="en-US" selected>English</option>
+        <option value="hi-IN">हिन्दी</option>
+      </select>
+
+      <button id="notifyPermBtn" class="small">Enable Notifications</button>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="left">
+      <div class="voice-panel">
+        <div class="mic-area">
+          <canvas id="wave" width="200" height="60"></canvas>
+          <button id="speakBtn" class="big">🎙 Start Voice Command</button>
+        </div>
+
+        <p id="status" class="status">Say: “Add task buy milk”, “Delete task buy milk”, “Clear all tasks”, “What should I do today?”</p>
+
+        <div class="ai-area">
+          <button id="aiBtn" class="small">🤖 AI Suggest (What should I do today?)</button>
+          <label class="switch small-switch">
+            <input id="voiceReplyToggle" type="checkbox" checked>
+            <span class="slider small"></span>
+          </label>
+          <span class="small-label">Voice Replies</span>
+        </div>
+
+        <form id="manualForm" class="manual-form" onsubmit="return false;">
+          <input id="manualText" placeholder="Type new task (or use voice)" />
+          <input id="deadlineInput" type="datetime-local" />
+          <input id="reminderInput" type="number" min="0" placeholder="Remind before (min)" />
+          <button id="addBtn" class="small">Add Task</button>
+        </form>
+      </div>
+
+      <section class="task-list-wrap">
+        <h2>Tasks</h2>
+        <ul id="taskList" class="task-list"></ul>
+      </section>
+    </section>
+
+    <aside class="right">
+      <div class="summary-card">
+        <h3>Summary</h3>
+        <p id="summaryText">Loading…</p>
+        <button id="clearAllBtn" class="small danger">Clear All</button>
+      </div>
+
+      <div class="upcoming-card">
+        <h3>Upcoming Reminders</h3>
+        <ul id="upcomingList"></ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <small>Works best in Chrome. Reminders/notifications require permission and page open.</small>
+  </footer>
+</body>
+</html>
